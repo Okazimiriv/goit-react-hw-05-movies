@@ -15,7 +15,7 @@ code {
 }
 
 ul {
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 
@@ -25,4 +25,10 @@ li {
 
 p {
   margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
