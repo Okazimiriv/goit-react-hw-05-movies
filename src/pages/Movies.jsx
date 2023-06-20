@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export const Movies = () => {
+const Movies = () => {
   return (
     <main>
       <h3>Additional information</h3>
@@ -15,3 +15,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;
