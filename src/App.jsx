@@ -12,7 +12,7 @@ export const App = () => {
     <Container>
       <Header>
         <nav>
-          <Link to="/" end>
+          <Link to="/">
             Home
           </Link>
           <Link to="/movies">Movies</Link>
