@@ -21,7 +21,7 @@ export const getTrandingMovies = async (page = 1) => {
   return data;
 };
 
-export const getMoviesById = async id => {
-  const { data } = await axios.get('movie/${id}');
-  return data;
-};
+// export const getMoviesById = async id => {
+//   const { data } = await axios.get('movie/${id}');
+//   return data;
+// };
