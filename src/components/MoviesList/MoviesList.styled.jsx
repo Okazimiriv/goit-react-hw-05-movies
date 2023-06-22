@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
+export const Tittle = styled.h1`
+  color: teal;
+`;
+
 export const BoxMove = styled.ul`
   display: flex;
   flex-direction: column;

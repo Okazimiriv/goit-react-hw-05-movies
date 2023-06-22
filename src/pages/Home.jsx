@@ -8,7 +8,7 @@ import * as ApiService from 'service/apiService';
 import MoviesList from 'components/MoviesList/MoviesList';
 // import { getProducts } from "../faceApi";
 
-// import { BoxMove,LinkWrap, MoveName } from '../components/MoviesList/MoviesList.styled';
+import { Tittle } from '../components/MoviesList/MoviesList.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <Container>
-      <h1>Trending today</h1>
+      <Tittle>Trending today</Tittle>
       {isLoading && <Loader>
         <ThreeDots color="lightslategrey" />
       </Loader>}
