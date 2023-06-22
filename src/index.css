@@ -15,13 +15,13 @@ code {
 }
 
 ul {
-  margin: 20px;
+  margin: 10px;
   padding: 0;
 }
 
-li {
+/* li {
   list-style: none;
-}
+} */
 
 p {
   margin: 0;

@@ -1,7 +1,7 @@
 import { Routes, Route} from 'react-router-dom';
 import { Container, Header, Link} from "./App.styled";
 import Home from 'pages/Home';
-import MoviesDatails from './pages/MoviesDetails';
+import MoviesDetails from './pages/MoviesDetails';
 import MoviesSearch from './pages/MoviesSearch';
 import  Cast  from './components/Cast/Cast';
 import Reviews  from 'components/Reviews/Reviews';
@@ -21,7 +21,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<MoviesSearch />} />
-        <Route path="/movies/:id" element={<MoviesDatails />} >
+        <Route path="/movies/:id" element={<MoviesDetails />} >
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

@@ -27,7 +27,7 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 23px;
 
   transition: color 250ms;
 
