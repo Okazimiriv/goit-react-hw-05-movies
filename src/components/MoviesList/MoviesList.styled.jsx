@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const Tittle = styled.h1`
-  color: teal;
+  color: lightcoral;
 `;
 
 export const BoxMove = styled.ul`
