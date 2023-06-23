@@ -46,9 +46,10 @@ const MoviesSearch = () => {
   };
 
   const onSearchSubmit = event => {
-    // event.preventDefault();
+    event.preventDefault();
 
-     const form = event.currentTarget;
+    const form = event.currentTarget;
+    console.log('event');
 
     if (name.trim() === '') {
       return toast.warn('Please enter search movie', {
@@ -59,43 +60,46 @@ const MoviesSearch = () => {
     const nextParams = name !== '' ? { name: form.elements.name.value } : {};
     setSearchParams(nextParams);
 
-    form.reset();
+    
   };
 
   return (
     <Container>
       {/* <SearchForm onSubmit={onSearchSubmit} /> */}
       <Wrapper>
-      <Icon />
-      <Input
-        type="text"
-        // autoComplete="off"
-        placeholder="Search movie"
-        onSubmit={onSearchSubmit}
-      />
-      <Icon />
-      <Button type="submit">Search</Button>
-    </Wrapper>
+        <Icon />
+        <Input
+          name="name"
+          type="text"
+          autoComplete="off"
+          placeholder="Search movie"
+          onSubmit={onSearchSubmit}
+        />
+        <Icon />
+        <Button type="submit" >Search</Button>
+      </Wrapper>
       <ToastContainer
         autoClose={3000}
         transition={Zoom}
         theme="colored"
         style={{ top: '1px' }}
       />
-      {isLoading && <Loader>
-        <ThreeDots color="lightslategrey" />
-      </Loader>}
+      {isLoading && (
+        <Loader>
+          <ThreeDots color="lightslategrey" />
+        </Loader>
+      )}
       {/* <MoviesList movies={movies} /> */}
       <BoxMove>
-      {movies.map(({ id, title }) => (
-        <li key={id}>
-          <LinkWrap to={`/movies/${id}`}>
-            <MoveName>{title}</MoveName>
-          </LinkWrap>
-        </li>
-      ))}
-    </BoxMove>
-       {error && <ErrorMessage>{error}</ErrorMessage>}
+        {movies.map(({ id, title }) => (
+          <li key={id}>
+            <LinkWrap to={`/movies/${id}`}>
+              <MoveName>{title}</MoveName>
+            </LinkWrap>
+          </li>
+        ))}
+      </BoxMove>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };

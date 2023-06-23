@@ -9,7 +9,6 @@ axios.defaults.params = {
 
 const trendings = '/trending/movie/day';
 const search = '/search/movie';
-// const movie = '/movie/';
 // const details = '/movie/movie_id';
 // const credits = '/movie/movie_id/credits';
 // const reviews = '/movie/movie_id/reviews';

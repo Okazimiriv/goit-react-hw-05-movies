@@ -1,13 +1,14 @@
 
-import { Link, Outlet  } from "react-router-dom";
+import { Outlet  } from "react-router-dom";
 import { Container} from "../App.styled";
-
+import MovieCard from "components/MovieCard/MovieCard";
+import { InformationBlock, LinkItem, LinkWrap, LinkBox } from "components/AdditionalInfo/AdditionalInfo.styled";
 
 const MoviesDatails = () => {
   return (
     <Container>
       <button type="button"> Go back</button>
-      <div>
+      {/* <div>
         <img src="https://via.placeholder.com/960x240" alt="" />
       </div>
       <div>
@@ -18,18 +19,21 @@ const MoviesDatails = () => {
         <h4>Genres</h4>
         <p>film geners</p>
       </div>
-      <div>
+      <div> */}
+      <MovieCard />
+      <InformationBlock>
         <p>Additional information</p>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
+        <LinkBox>
+          <LinkItem>
+            <LinkWrap to="cast">Cast</LinkWrap>
+          </LinkItem>
+          <LinkItem>
+            <LinkWrap to="reviews">Reviews</LinkWrap>
+          </LinkItem>
+        </LinkBox>
+      </InformationBlock>
          <Outlet />
-      </div>
+      {/* </div> */}
       
     </Container>
   );
