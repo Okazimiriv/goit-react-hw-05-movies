@@ -21,8 +21,9 @@ const MoviesSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get('query') ?? '';
 
-useEffect(() => {
-    if (!searchMovie) {
+  useEffect(() => {
+  
+    if (!searchMovie) {      
       return
     }
   getMovies();
@@ -34,7 +35,7 @@ useEffect(() => {
 
     getSearchMovies(searchMovie)
       .then(resp => {
-       console.log(resp);
+       if (resp.length === 0) throw new Error("No movies found");
         setMovies(resp.results);
       })
       .catch(error =>
@@ -43,7 +44,10 @@ useEffect(() => {
       .finally(() => setIsLoading(false));
   };
 
-  const onChangeSearch = event => {
+  const onChangeSearch = event => { 
+    if (event.target.value === "") {
+      setSearchParams({});
+    };
     setQuery(event.target.value);
   };
 
@@ -52,7 +56,7 @@ useEffect(() => {
     console.log('query', query);
 
     if (query.trim() === '') {
-      return toast.warn('Please enter key words for search', {
+      return toast.warn('Please enter key words for search movie', {
         icon: false,
       });
     }
@@ -78,7 +82,7 @@ useEffect(() => {
           <ThreeDots color="lightslategrey" />
         </Loader>
       )} 
-      <MoviesList movies={movies} />      
+      {movies.length > 0 && <MoviesList movies={movies} />}      
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );

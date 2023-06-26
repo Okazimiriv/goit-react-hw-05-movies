@@ -8,24 +8,32 @@ axios.defaults.params = {
 };
 
 const trendings = '/trending/movie/day';
-// const search = '/search/movie';
-// const details = '/movie/movie_id';
-// const credits = '/movie/movie_id/credits';
-// const reviews = '/movie/movie_id/reviews';
+const search = '/search/movie';
+const movie = '/movie/';
 
 export const getTrandingMovies = async (page = 1) => {
   const { data } = await axios.get(trendings);
   return data;
 };
 
-//api.themoviedb.org/3/search/movie?api_key=75f1193eb903abcb6bf848342ccb4206&query=batman
-
+// --url 'https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=75f1193eb903abcb6bf848342ccb4206'
 export const getSearchMovies = async query => {
-  const { data } = await axios.get(`/search/movie?query=${query}`);
+  const { data } = await axios.get(`${search}?query=${query}`);
   return data;
 };
 
-// export const getMoviesById = async id => {
-//   const { data } = await axios.get('movie/${id}');
-//   return data;
-// };
+// --url 'https://api.themoviedb.org/3/movie/movie_id?language=en-US' \
+export const getMoviesById = async id => {
+  const response = await axios.get(`${movie}${id}`);
+  return response;
+};
+
+export const getMovieCastById = async id => {
+  const response = await axios.get(`${movie}${id}/credits`);
+  return response;
+};
+
+export const getMovieReviewsById = async id => {
+  const response = await axios.get(`${movie}${id}/reviews`);
+  return response;
+};
