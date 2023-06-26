@@ -1,43 +1,41 @@
-// import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import SearchForm from 'components/SearchForm/SearchForm';
-// import MoviesList from 'components/MoviesList/MoviesList';
+import SearchForm from 'components/SearchForm/SearchForm';
+import MoviesList from 'components/MoviesList/MoviesList';
+import { getSearchMovies } from 'service/apiService';
 import { Container } from '../App.styled';
-import * as ApiService from 'service/apiService';
+
 import { ToastContainer, Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Loader } from 'components/Loader/Loader.styled';
 import { ThreeDots } from 'react-loader-spinner';
 import { ErrorMessage } from '../ErorrMessage';
+// import { useFetchSearch } from 'components/hooks/useFetchSearch';
 
-import { BoxMove, LinkWrap, MoveName } from '../components/MoviesList/MoviesList.styled';
-import { Wrapper, Input, Icon, Button } from '../components/SearchForm/SearchForm.styled';
-
-const MoviesSearch = () => {  
+const MoviesSearch = () => { 
+  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const name = searchParams.get('name');
-  console.log(searchParams);
+  const searchMovie = searchParams.get('query') ?? '';
 
-  useEffect(() => {
-    if (!name) return;
+useEffect(() => {
+    if (!searchMovie) {
+      return
+    }
+  getMovies();
+  }, [searchMovie]);
 
-    getSearchMovies();
-  }, [name]);
-
-  const getSearchMovies = (name) => {
+  const getMovies = (searchMovie) => {
     setIsLoading(true);
-    setError(null);
+     setError(null);
 
-    ApiService.getSearchMovies(name)
-      .then(response => {       
-        console.log(response.data.results);
-
-        setMovies(response.data.results);
+    getSearchMovies(searchMovie)
+      .then(resp => {
+       console.log(resp);
+        setMovies(resp.results);
       })
       .catch(error =>
         setError('Oops! Something went wrong! Try reloading the page!')
@@ -45,39 +43,30 @@ const MoviesSearch = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const onSearchSubmit = event => {
+  const onChangeSearch = event => {
+    setQuery(event.target.value);
+  };
+
+  const handleSubmit = event => {
     event.preventDefault();
+    console.log('query', query);
 
-    const form = event.currentTarget;
-    console.log('event');
-
-    if (name.trim() === '') {
-      return toast.warn('Please enter search movie', {
+    if (query.trim() === '') {
+      return toast.warn('Please enter key words for search', {
         icon: false,
       });
     }
 
-    const nextParams = name !== '' ? { name: form.elements.name.value } : {};
-    setSearchParams(nextParams);
-
-    
+    setSearchParams({ query });
+    setQuery('');
   };
-
+  
   return (
     <Container>
-      {/* <SearchForm onSubmit={onSearchSubmit} /> */}
-      <Wrapper>
-        <Icon />
-        <Input
-          name="name"
-          type="text"
-          autoComplete="off"
-          placeholder="Search movie"
-          onSubmit={onSearchSubmit}
-        />
-        <Icon />
-        <Button type="submit" >Search</Button>
-      </Wrapper>
+      <SearchForm
+        value={query}
+        onChange={onChangeSearch}
+        onSubmit={handleSubmit} />      
       <ToastContainer
         autoClose={3000}
         transition={Zoom}
@@ -88,20 +77,30 @@ const MoviesSearch = () => {
         <Loader>
           <ThreeDots color="lightslategrey" />
         </Loader>
-      )}
-      {/* <MoviesList movies={movies} /> */}
-      <BoxMove>
-        {movies.map(({ id, title }) => (
-          <li key={id}>
-            <LinkWrap to={`/movies/${id}`}>
-              <MoveName>{title}</MoveName>
-            </LinkWrap>
-          </li>
-        ))}
-      </BoxMove>
+      )} 
+      <MoviesList movies={movies} />      
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };
 
 export default MoviesSearch;
+
+// const MoviesSearch = () => { 
+//   const { movies, isLoading, error, handleChangeSearch } = useFetchSearch();
+  
+//   return (
+//     <Container>
+//       <SearchForm onSubmit={handleChangeSearch} /> //       
+//       {isLoading && (
+//         <Loader>
+//           <ThreeDots color="lightslategrey" />
+//         </Loader>
+//       )} 
+//       <MoviesList movies={movies} isLoading={isLoading} />      
+//       {error && <ErrorMessage>{error}</ErrorMessage>}
+//     </Container>
+//   );
+// };
+
+

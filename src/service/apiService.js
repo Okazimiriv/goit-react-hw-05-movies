@@ -8,7 +8,7 @@ axios.defaults.params = {
 };
 
 const trendings = '/trending/movie/day';
-const search = '/search/movie';
+// const search = '/search/movie';
 // const details = '/movie/movie_id';
 // const credits = '/movie/movie_id/credits';
 // const reviews = '/movie/movie_id/reviews';
@@ -21,7 +21,7 @@ export const getTrandingMovies = async (page = 1) => {
 //api.themoviedb.org/3/search/movie?api_key=75f1193eb903abcb6bf848342ccb4206&query=batman
 
 export const getSearchMovies = async query => {
-  const { data } = await axios.get(search);
+  const { data } = await axios.get(`/search/movie?query=${query}`);
   return data;
 };
 
