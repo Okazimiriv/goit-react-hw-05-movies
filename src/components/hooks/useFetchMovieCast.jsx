@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieById } from 'service/apiService';
+import { getMovieCastById } from 'service/apiService';
 
-export const useFetchMovieDetails = () => {
-  const [movie, setMovie] = useState({});
+export const useFetchMovieCast = () => {
+  const [castList, setCastList] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
-  // console.log(params);
+  // console.log('cast params',params);
 
   useEffect(() => {  
     setIsLoading(true);
 
     const fetchData = async () => {
       try {
-        const resp = await getMovieById(id);
-        // console.log('resp', resp);
-        setMovie(resp);
+        const resp = await getMovieCastById(id);
+        console.log('cast', resp);
+        setCastList(resp);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -26,5 +26,5 @@ export const useFetchMovieDetails = () => {
     fetchData();
   }, [id]);  
 
-  return { movie, isLoading, error};
+  return { castList, isLoading, error};
 };

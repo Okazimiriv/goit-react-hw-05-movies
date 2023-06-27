@@ -14,22 +14,10 @@ const MoviesDatails = () => {
   // const { id } = useParams();
   const location = useLocation();  
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   loadDetailFilm(id)
-  //     .then(resp => {
-  //       setMovieInfo(resp);
-  //     })
-  //     .catch(error => {
-  //       console.log(error.message);
-  //     });
-  // }, [id]);
-
-
-
+  
   const { movie, isLoading, error } = useFetchMovieDetails();
-  console.log('movie', movie);
+  
+  // console.log('movie', movie);
   const {title, overview, vote_average, poster_path, genres = []} = movie;
   return (
     <Container>
@@ -53,7 +41,7 @@ const MoviesDatails = () => {
             <LinkWrap to="cast" state={{ from: location.state?.from ?? '/movies' }}>Cast</LinkWrap>
           </LinkItem>
           <LinkItem>
-            <LinkWrap to="reviews">Reviews</LinkWrap>
+            <LinkWrap to="reviews" state={{ from: location.state?.from ?? '/movies' }}>Reviews</LinkWrap>
           </LinkItem>
         </LinkBox>
       </InformationBlock>

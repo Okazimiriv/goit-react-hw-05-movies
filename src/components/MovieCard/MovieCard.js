@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   MovieCardWrap,
@@ -38,10 +38,10 @@ const MovieCard = ({
 };
 export default MovieCard;
 
-MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  overview: PropTypes.string.isRequired,
-  vote_average: PropTypes.string.isRequired,
-  genres: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
-};
+// MovieCard.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   overview: PropTypes.string.isRequired,
+//   vote_average: PropTypes.number.isRequired,
+//   genres: PropTypes.string.isRequired,
+//   poster_path: PropTypes.string.isRequired,
+// };
