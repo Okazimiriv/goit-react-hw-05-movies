@@ -65,16 +65,6 @@ const Cast = () => {
             );
           })}
       </CastCardWrap>
-      {/* <ul>
-        <li>
-          <img src="https://via.placeholder.com/200x100" alt="" />
-          <p>Lorem ipsum dolor.</p>
-        </li>
-        <li>
-          <img src="https://via.placeholder.com/200x100" alt="" />
-          <p>Lorem ipsum dolor.</p>
-        </li>
-      </ul> */}
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </section>
   );
@@ -84,6 +74,6 @@ export default Cast;
 
 Cast.propTypes = {
   id: PropTypes.number.isRequired,
-  castInfo: PropTypes.array.isRequired,
-  loadCastFilm: PropTypes.func.isRequired,
+  castList: PropTypes.array.isRequired,
+  getMovieCastById: PropTypes.func.isRequired,
 }.isRequired;

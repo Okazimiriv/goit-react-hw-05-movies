@@ -27,8 +27,7 @@ export const Content = styled.div`
 `;
 
 export const CastImg = styled.img`
-  height: 100%;
-  
+  height: 100%;  
 `;
 
 export const NameActor = styled.p`
