@@ -50,7 +50,7 @@ const MoviesSearch = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('query', query);
+    // console.log('query', query);
 
     if (query.trim() === '') {
       return toast.warn('Please enter key words for search movie', {

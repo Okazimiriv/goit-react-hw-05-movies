@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+import defaultCard from './no-image-icon.png';
 
 import {
   MovieCardWrap,
@@ -17,7 +18,11 @@ const MovieCard = ({
   return (
     <MovieCardWrap>
       <MovieImage
-        src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w300/${poster_path}`
+            : defaultCard
+        }
         alt={`${title} poster`}
       />
       <MovieDescription>

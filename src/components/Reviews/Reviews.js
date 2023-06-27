@@ -18,8 +18,8 @@ const Reviews = () => {
 
     getMovieReviewsById(id)
       .then(resp => {
-        console.log('reviews', resp);
-        if (resp.results.length === 0) setError('No movies found...');
+        // console.log('reviews', resp);
+        if (resp.results.length === 0) setError('No reviews found...');
         setReviewsList(resp.results);
       })
       .catch(error =>

@@ -25,7 +25,7 @@ const Home = () => {
 
     ApiService.getTrandingMovies()
       .then(responce => {
-        console.log(responce);
+        // console.log(responce);
 
         setTrendingMovies(responce.results);
       })
