@@ -5,17 +5,17 @@ export const MovieCardWrap = styled.div`
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16);
 `;
 
-export const MovieImageWrap = styled.div`
-   height: 400px;
-`;
-
 export const MovieImage = styled.img`
    display: block;
-//   width: 280px;
-//   height: 100%;
-//   object-fit: cover;
+   width: 300px;
+   height: 100%
+  object-fit: cover;
 `;
 
 export const MovieDescription = styled.div`
    margin-left: 20px;
+`;
+
+export const GenresBox = styled.ul`
+ margin-left: 20px;   
 `;

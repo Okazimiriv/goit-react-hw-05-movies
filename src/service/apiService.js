@@ -24,8 +24,8 @@ export const getSearchMovies = async query => {
 
 // --url 'https://api.themoviedb.org/3/movie/movie_id?language=en-US' \
 export const getMovieById = async id => {
-  const response = await axios.get(`${movie}${id}`);
-  return response;
+  const { data } = await axios.get(`${movie}${id}`);
+  return data;
 };
 
 export const getMovieCastById = async id => {
