@@ -19,6 +19,7 @@ const Reviews = () => {
     getMovieReviewsById(id)
       .then(resp => {
         console.log('reviews', resp);
+        if (resp.results.length === 0) setError('No movies found...');
         setReviewsList(resp.results);
       })
       .catch(error =>
@@ -26,14 +27,6 @@ const Reviews = () => {
       )
       .finally(() => setIsLoading(false));
   }, [id]);
-
-  if (reviewsList.length === 0) {
-    return (
-      <div>
-        <p>We don`t have any reviews for this movie.</p>
-      </div>
-    );
-  }
 
   return (
     <section>

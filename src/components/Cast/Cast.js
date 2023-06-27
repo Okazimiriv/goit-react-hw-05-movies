@@ -1,4 +1,3 @@
-// import { useFetchMovieCast } from 'components/hooks/useFetchMovieCast';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
