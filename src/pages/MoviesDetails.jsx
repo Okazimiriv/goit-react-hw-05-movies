@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import { Outlet, useParams, useLocation  } from "react-router-dom";
+import { Outlet, useLocation  } from "react-router-dom";
 import { Container } from "../App.styled";
 
 import MovieCard from "components/MovieCard/MovieCard";
-import { InformationBlock, LinkItem, LinkWrap, LinkBox } from "components/AdditionalInfo/AdditionalInfo.styled";
+// import { InformationBlock, LinkItem, LinkWrap, LinkBox } from "components/AdditionalInfo/AdditionalInfo.styled";
 import { GoBackButton } from "components/GoBackBtn/GoBackBtn.styled";
 import { Loader } from "components/Loader/Loader.styled";
 import { ThreeDots } from 'react-loader-spinner';
@@ -12,8 +12,8 @@ import { useFetchMovieDetails } from "components/hooks/useFetchMovieDetails";
 
 const MoviesDatails = () => {
   // const { id } = useParams();
-  // const location = useLocation();  
-  // const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  const location = useLocation();  
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
   // const [isLoading, setIsLoading] = useState(false);
 
   // useEffect(() => {
@@ -33,7 +33,7 @@ const MoviesDatails = () => {
   const {title, overview, vote_average, genres = [], poster_path } = movie;
   return (
     <Container>
-      {/* {/* <GoBackButton to={backLinkLocationRef.current}>Go back</GoBackButton> */}
+       <GoBackButton to={backLinkLocationRef.current}>Go back</GoBackButton> */}
        {isLoading && (
        <Loader>
       <ThreeDots color="lightslategrey" />
