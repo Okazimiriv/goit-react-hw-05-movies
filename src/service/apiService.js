@@ -23,7 +23,7 @@ export const getSearchMovies = async query => {
 };
 
 // --url 'https://api.themoviedb.org/3/movie/movie_id?language=en-US' \
-export const getMoviesById = async id => {
+export const getMovieById = async id => {
   const response = await axios.get(`${movie}${id}`);
   return response;
 };

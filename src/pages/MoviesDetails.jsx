@@ -4,20 +4,41 @@ import { Container } from "../App.styled";
 
 import MovieCard from "components/MovieCard/MovieCard";
 import { InformationBlock, LinkItem, LinkWrap, LinkBox } from "components/AdditionalInfo/AdditionalInfo.styled";
-// import { GoBackBtn } from "components/GoBackBtn/GoBackBtn";
 import { GoBackButton } from "components/GoBackBtn/GoBackBtn.styled";
-
+import { Loader } from "components/Loader/Loader.styled";
+import { ThreeDots } from 'react-loader-spinner';
+import { ErrorMessage } from '../ErorrMessage';
+import { useFetchMovieDetails } from "components/hooks/useFetchMovieDetails";
 
 const MoviesDatails = () => {
-  const { id } = useParams();
-  const location = useLocation();
-  // const goBackLocation = location.state?.from ?? '/movies';
-  const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  
+  // const { id } = useParams();
+  // const location = useLocation();  
+  // const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  // const [isLoading, setIsLoading] = useState(false);
+
+  // useEffect(() => {
+  //   loadDetailFilm(id)
+  //     .then(resp => {
+  //       setMovieInfo(resp);
+  //     })
+  //     .catch(error => {
+  //       console.log(error.message);
+  //     });
+  // }, [id]);
+
+
+
+  const { movie, isLoading, error } = useFetchMovieDetails();
+  console.log('movie', movie);
+  const {title, overview, vote_average, genres = [], poster_path } = movie;
   return (
     <Container>
-      <GoBackButton to={backLinkLocationRef.current}>Go back</GoBackButton>
-      
+      {/* {/* <GoBackButton to={backLinkLocationRef.current}>Go back</GoBackButton> */}
+       {isLoading && (
+       <Loader>
+      <ThreeDots color="lightslategrey" />
+      </Loader>
+      )} 
       {/* <div>
         <img src="https://via.placeholder.com/960x240" alt="" />
       </div>
@@ -30,8 +51,14 @@ const MoviesDatails = () => {
         <p>film geners</p>
       </div>
       <div> */}
-      <MovieCard />
-      <InformationBlock>
+      <MovieCard
+          title={title}
+          vote_average={vote_average}
+          overview={overview}
+          genres={genres}
+          poster_path={poster_path}/>
+      
+      {/* <InformationBlock>
         <p>Additional information</p>
         <LinkBox>
           <LinkItem>
@@ -41,10 +68,10 @@ const MoviesDatails = () => {
             <LinkWrap to="reviews">Reviews</LinkWrap>
           </LinkItem>
         </LinkBox>
-      </InformationBlock>
+      </InformationBlock> */}
          <Outlet />
       {/* </div> */}
-      
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };
