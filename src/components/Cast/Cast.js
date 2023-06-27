@@ -6,6 +6,15 @@ import { Loader } from 'components/Loader/Loader.styled';
 import { ThreeDots } from 'react-loader-spinner';
 import { ErrorMessage } from 'ErorrMessage';
 import { getMovieCastById } from 'service/apiService';
+import avatar from './defavatar.png';
+import {
+  CastCardWrap,
+  CastItem,
+  CastImg,
+  NameActor,
+  Content,
+  CharacterText,
+} from './Cast.styled';
 
 const Cast = () => {
   const [castList, setCastList] = useState({});
@@ -33,23 +42,29 @@ const Cast = () => {
           <ThreeDots color="lightslategrey" />
         </Loader>
       )}
-      <ul>
+      <CastCardWrap>
         {castList.length > 0 &&
           castList.map(({ id, name, character, profile_path }) => {
             return (
-              <li key={id}>
-                <div>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300/${profile_path}`}
+              <CastItem key={id}>
+                <Content>
+                  <CastImg
+                    src={
+                      profile_path
+                        ? `https://image.tmdb.org/t/p/w300/${profile_path}`
+                        : avatar
+                    }
                     alt={`${name} portrait`}
+                    width="100px"
+                    loading="lazy"
                   />
-                </div>
-                <p>{name}</p>
-                <p>{`Character: ${character}`}</p>
-              </li>
+                </Content>
+                <NameActor>{name}</NameActor>
+                <CharacterText>{`Character: ${character}`}</CharacterText>
+              </CastItem>
             );
           })}
-      </ul>
+      </CastCardWrap>
       {/* <ul>
         <li>
           <img src="https://via.placeholder.com/200x100" alt="" />
