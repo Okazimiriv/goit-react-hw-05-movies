@@ -27,7 +27,10 @@ const Cast = () => {
     setError(null);
 
     getMovieCastById(id)
-      .then(resp => setCastList(resp.cast))
+      .then(resp => {
+        if (resp.cast.length === 0) setError('No cast found...');
+        setCastList(resp.cast);
+      })
       .catch(error =>
         setError('Oops! Something went wrong! Try reloading the page!')
       )
