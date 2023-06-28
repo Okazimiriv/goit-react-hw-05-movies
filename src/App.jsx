@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { Container, Header, Link} from './App.styled';
 // import Home from 'pages/Home';
 // import MoviesDetails from './pages/MoviesDetails';
 // import MoviesSearch from './pages/MoviesSearch';

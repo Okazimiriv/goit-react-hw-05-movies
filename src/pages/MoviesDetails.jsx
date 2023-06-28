@@ -12,7 +12,7 @@ import { useFetchMovieDetails } from "components/hooks/useFetchMovieDetails";
 
 const MoviesDatails = () => {
    const location = useLocation();  
-  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  const backLinkLocation = useRef(location.state?.from ?? '/');
   
   const { movie, isLoading, error } = useFetchMovieDetails();
   
@@ -20,7 +20,7 @@ const MoviesDatails = () => {
   const {title, overview, vote_average, poster_path, genres = []} = movie;
   return (
     <Container>
-       <GoBackButton to={backLinkLocationRef.current}>Go back</GoBackButton> 
+       <GoBackButton to={backLinkLocation.current}>Go back</GoBackButton> 
        {isLoading && (
        <Loader>
       <ThreeDots color="lightslategrey" />
