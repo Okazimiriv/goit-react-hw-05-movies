@@ -10,6 +10,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 
 import { Tittle } from '../components/MoviesList/MoviesList.styled';
 
+
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

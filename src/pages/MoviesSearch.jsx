@@ -88,19 +88,4 @@ const MoviesSearch = () => {
 
 export default MoviesSearch;
 
-// const MoviesSearch = () => {
-//   const { movies, isLoading, error, handleChangeSearch } = useFetchSearch();
 
-//   return (
-//     <Container>
-//       <SearchForm onSubmit={handleChangeSearch} /> //
-//       {isLoading && (
-//         <Loader>
-//           <ThreeDots color="lightslategrey" />
-//         </Loader>
-//       )}
-//       <MoviesList movies={movies} isLoading={isLoading} />
-//       {error && <ErrorMessage>{error}</ErrorMessage>}
-//     </Container>
-//   );
-// };
