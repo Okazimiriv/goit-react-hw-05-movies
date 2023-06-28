@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 import { Outlet, useLocation  } from "react-router-dom";
 import { Container } from "../App.styled";
 
@@ -44,7 +44,9 @@ const MoviesDatails = () => {
           </LinkItem>
         </LinkBox>
       </InformationBlock>
-         <Outlet />
+        <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
       {/* </div> */}
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
