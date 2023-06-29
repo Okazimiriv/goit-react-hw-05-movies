@@ -11,9 +11,8 @@ import { ErrorMessage } from '../ErorrMessage';
 import { useFetchMovieDetails } from "components/hooks/useFetchMovieDetails";
 
 const MoviesDatails = () => {
-   const location = useLocation();  
-  const backLinkLocation = useRef(location.state?.from ?? '/');
-  
+  const location = useLocation();  
+  const backLinkLocation = useRef(location.state?.from ?? '/movies');
   const { movie, isLoading, error } = useFetchMovieDetails();
   
   // console.log('movie', movie);
